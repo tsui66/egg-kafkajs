@@ -14,7 +14,7 @@ module.exports = appInfo => {
         ],
       },
     ],
-    pub: [
+    pub:
       {
         key: 'test',
         topics: [],
@@ -24,8 +24,9 @@ module.exports = appInfo => {
         ackTimeoutMs: 1000,
         // Partitioner type (default = 0, random = 1, cyclic = 2, keyed = 3, custom = 4), default 0
         partitionerType: 2,
+        partition: 0,
+        attributes: 0,
       },
-    ],
   };
 
   return config;

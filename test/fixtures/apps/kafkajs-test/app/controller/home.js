@@ -28,7 +28,6 @@ class HomeController extends Controller {
     }
     const buffer = this.ctx.helper.binaryEncode(data);
     const msg = [ this.ctx.kafka.Message('topic1', 'test', buffer)];
-
     const result = await this.ctx.kafka.send(msg);
     this.ctx.status = 200;
   }

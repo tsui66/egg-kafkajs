@@ -18,13 +18,14 @@ exports.kafkajs = {
       ],
     },
   ],
-  pub: [
-    {
-      topics: [
-        'topic1',
-      ],
-    },
-  ],
+  pub:
+  {
+    topics: [
+      'topic1',
+    ],
+    partition: 0,
+    attributes: 0,
+  },
   env: 'development',
   avroSchema: {
     namespace: 'com.ecarx.protocol.model',

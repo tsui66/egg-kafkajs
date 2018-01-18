@@ -65,7 +65,6 @@ module.exports = app => {
       encoding: 'buffer', //trans binary data
       keyEncoding: 'utf8'
     };
-    console.log(defaultOptions, topics, '..........')
     const consumer = new ConsumerGroup(defaultOptions, topics);
 
     consumer.on('error', errorHandler);
