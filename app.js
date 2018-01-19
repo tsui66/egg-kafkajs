@@ -34,9 +34,9 @@ module.exports = app => {
   function errorHandler(err) {
     // 应用启动前避免错误输出到标准输出
     if (appReady) {
-      logger.error(err);
+      app.coreLogger.error(err);
     } else {
-      logger.warn(err);
+      app.coreLogger.warn(err);
     }
   }
 
