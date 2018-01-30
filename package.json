@@ -17,7 +17,7 @@
     "bluebird": "^3.5.1",
     "events": "^1.1.1",
     "extend": "^3.0.1",
-    "kafka-node": "^2.3.2"
+    "kafka-node": "^2.3.0"
   },
   "devDependencies": {
     "autod": "^3.0.0",
