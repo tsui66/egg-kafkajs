@@ -1,6 +1,6 @@
 {
   "name": "egg-kafkajs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "kafka plugin for egg",
   "eggPlugin": {
     "name": "kafkajs"
@@ -14,9 +14,10 @@
     "assert": "^1.4.1",
     "avsc": "^5.1.2",
     "await-event": "^2.1.0",
+    "bluebird": "^3.5.1",
     "events": "^1.1.1",
     "extend": "^3.0.1",
-    "kafka-node": "^2.3.1"
+    "kafka-node": "^2.3.2"
   },
   "devDependencies": {
     "autod": "^3.0.0",
