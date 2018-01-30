@@ -1,6 +1,6 @@
 {
   "name": "egg-kafkajs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "kafka plugin for egg",
   "eggPlugin": {
     "name": "kafkajs"
@@ -44,6 +44,8 @@
   "files": [
     "app.js",
     "agent.js",
+    "lib",
+    "app",
     "config"
   ],
   "ci": {
