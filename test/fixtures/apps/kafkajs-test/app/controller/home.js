@@ -5,7 +5,7 @@ const Controller = require('egg').Controller;
 class HomeController extends Controller {
   async index() {
     // 区分不同业务的key
-    const key = 'test';
+    const key = 'key1';
     let m_time =  Date.now();
     const options = {
       env: 'development',
@@ -27,8 +27,13 @@ class HomeController extends Controller {
       data[field.name] = options[field.name] || null;
     }
     const buffer = this.ctx.helper.binaryEncode(data);
-    const msg = [ this.ctx.kafka.Message('topic1', 'test', buffer)];
-    const result = await this.ctx.kafka.send(msg);
+    const msg = [ this.ctx.kafka.Message('topic1', key, buffer)];
+    try {
+      const result = await this.ctx.kafka.send(msg);
+    } catch(err) {
+      console.log(err, '0000000000000000')
+    }
+    
     this.ctx.status = 200;
   }
 }

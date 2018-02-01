@@ -16,6 +16,9 @@ exports.kafkajs = {
       topics: [
         'topic1',
       ],
+      'topic1-KEYS': [
+        'key1'
+      ]
     },
   ],
   pub:

@@ -83,28 +83,32 @@ module.exports = app => {
     });
 
     for (let topic of topics) {
-      const filepath = path.join(app.config.baseDir, 'app/kafka', topic + '_consumer.js');
-      if (!fs.existsSync(filepath)) {
-        app.coreLogger.warn('[egg-kafkajs] CANNOT find the subscription logic in file:`%s` for topic=%s', filepath, topic);
-        continue;
-      } else {
-        const Subscriber = require(filepath);
-        topic2Subscription.set(topic, Subscriber);
+      // TODO  check options property
+      for (let key of options[`${topic}-KEYS`]) {
+        const filepath = path.join(app.config.baseDir, `app/kafka/${topic}/` + key + '_consumer.js');
+        if (!fs.existsSync(filepath)) {
+          app.coreLogger.warn('[egg-kafkajs] CANNOT find the subscription logic in file:`%s` for topic=%s', filepath, topic);
+          continue;
+        } else {
+          const Subscriber = require(filepath);
+          topic2Subscription.set(`${topic}:${key}`, Subscriber);
+        }
       }
     }
 
     consumer.on('message', function (message) {
       let { topic, key } = message;
-      const filepath = path.join(app.config.baseDir, 'app/kafka', topic + '_consume.js');
+      const filepath = path.join(app.config.baseDir, `app/kafka/${topic}/` + key +  '_consume.js');
 
       if (!fs.existsSync(filepath)) {
-        app.coreLogger.warn('[egg-kafkajs] CANNOT find the subscription logic in file:`%s` for topic=%s', filepath, topic);
+        app.coreLogger.warn('[egg-kafkajs] CANNOT find the subscription logic in file:`%s` for topic=%s & key=%s', filepath, topic, key);
       }
-      const Subscriber = topic2Subscription.get(topic);
-
-      const ctx = app.createAnonymousContext();
-      const subscriber = new Subscriber(ctx);
-      subscriber.subscribe(message);
+      const Subscriber = topic2Subscription.get(`${topic}:${key}`);
+      if (Subscriber) {
+        const ctx = app.createAnonymousContext();
+        const subscriber = new Subscriber(ctx);
+        subscriber.subscribe(message);
+      }
     });
   }
 
