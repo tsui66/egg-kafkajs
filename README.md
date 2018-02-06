@@ -65,6 +65,31 @@ config.kafkajs = {
   };
 ```
 
+## Structure
+
+```
+egg-project
+├── package.json
+├── app.js (optional)
+├── app
+|   ├── router.js
+│   ├── controller
+│   |   └── home.js
+│   ├── service (optional)
+│   |   └── user.js
+│   |   └── response_time.js
+│   └── kafka (optional)  --------> like `controller, service...`
+│       ├── topic (optional)  -------> topic name of kafka
+│            └── key_comsumer.js(optional)  ------> `key` is the key of topic
+├── config
+|   ├── plugin.js
+|   ├── config.default.js
+│   ├── config.prod.js
+|   ├── config.test.js (optional)
+|   ├── config.local.js (optional)
+|   └── config.unittest.js (optional)
+```
+
 see [config/config.default.js](config/config.default.js) for more detail.
 
 ## Example
