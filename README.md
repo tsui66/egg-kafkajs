@@ -90,7 +90,7 @@ egg-project
 |   └── config.unittest.js (optional)
 ```
 
-see [config/config.default.js](config/config.default.js) for more detail.
+see [test/fixtures/apps/kafkajs-test/](test/fixtures/apps/kafkajs-test) for more detail.
 
 ## Example
 
