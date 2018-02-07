@@ -47,6 +47,7 @@ config.kafkajs = {
       {
         groupId: 'consumer-groupId',
         topics: [ 'topic1', 'topic2' ],
+        keys: [ 'key1', 'key2' ],
       },
     ],
     pub:
