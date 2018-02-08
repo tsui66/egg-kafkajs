@@ -81,8 +81,9 @@ egg-project
 │   |   └── user.js
 │   |   └── response_time.js
 │   └── kafka (optional)  --------> like `controller, service...`
-│       ├── topic (optional)  -------> topic name of kafka
-│            └── key_comsumer.js(optional)  ------> `key` is the key of topic
+│       ├── topic1 (optional)  -------> topic name of kafka
+│            ├── key1_comsumer.js(optional)  ------> `key` is the key of topic
+|            └── key2_comsumer.js(optional)
 ├── config
 |   ├── plugin.js
 |   ├── config.default.js
