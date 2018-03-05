@@ -21,7 +21,7 @@ module.exports = app => {
   const consumerMap = new Map();
   const topic2Subscription = new Map();
 
-  const kafkaClient = Client(app.config.kafkajs.host);
+  const kafkaClient = Client({ kafkaHost: app.config.kafkajs.host });
   let appReady = false;
 
   app.ready(() => {
@@ -43,8 +43,8 @@ module.exports = app => {
   for (const options of sub) {
     const topics = options.topics || [];
     let defaultOptions = {
-      host: app.config.kafkajs.host,  // zookeeper host omit if connecting directly to broker (see kafkaHost below)
-      // kafkaHost: 'broker:9092', // connect directly to kafka broker (instantiates a KafkaClient)
+      // host: app.config.kafkajs.host,  // zookeeper host omit if connecting directly to broker (see kafkaHost below)
+      kafkaHost: app.config.kafkajs.host, // connect directly to kafka broker (instantiates a KafkaClient)
       // zk : kafkaClient,   // put client zk settings if you need them (see Client)
       // batch: undefined, // put client batch settings if you need them (see Client)
       // ssl: true, // optional (defaults to false) or tls options hash
