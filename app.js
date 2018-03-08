@@ -98,7 +98,7 @@ module.exports = app => {
 
     consumer.on('message', function (message) {
       let { topic, key } = message;
-      const filepath = path.join(app.config.baseDir, `app/kafka/${topic}/` + key +  '_consume.js');
+      const filepath = path.join(app.config.baseDir, `app/kafka/${topic}/` + key +  '_consumer.js');
 
       if (!fs.existsSync(filepath)) {
         app.coreLogger.warn('[egg-kafkajs] CANNOT find the subscription logic in file:`%s` for topic=%s & key=%s', filepath, topic, key);
