@@ -77,8 +77,11 @@ module.exports = app => {
       app.coreLogger.info('[egg-kafkajs] consumer: %s is ready', options.groupId);
     });
     app.beforeClose(function* () {
-      consumer.close(true, function (error) {
-        app.coreLogger.info('[egg-kafkajs] consumer: %s is closed', options.groupId);
+      yield new Promise((resolve, reject)=>{
+        consumer.close(true, function (error) {
+          app.coreLogger.info('[egg-kafkajs] consumer: %s is closed', options.groupId);
+          resolve(true);
+        });
       });
     });
 
